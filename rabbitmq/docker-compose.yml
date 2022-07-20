@@ -8,7 +8,7 @@ services:
       - ./node1/data:/var/lib/rabbitmq/
       - ./node1/log:/var/log/rabbitmq/
     ports:
-      - 5672:5672
+      # - 5672:5672
       - 15672:15672
     networks:
       - rabbitmqnet
@@ -21,7 +21,7 @@ services:
     container_name: rabbitmq_node2
     hostname: rabbitmq_node2
     ports:
-      - 5673:5672
+      # - 5673:5672
       - 15673:15672
     volumes:
       - ./node2/data:/var/lib/rabbitmq/
@@ -37,7 +37,7 @@ services:
     container_name: rabbitmq_node3
     hostname: rabbitmq_node3
     ports:
-      - 5674:5672
+      # - 5674:5672
       - 15674:15672
     volumes:
       - ./node3/data:/var/lib/rabbitmq/
@@ -48,6 +48,13 @@ services:
       RABBITMQ_ERLANG_COOKIE: ${RABBITMQ_ERLANG_COOKIE}
       RABBITMQ_DEFAULT_USER: ${RABBITMQ_DEFAULT_USER}
       RABBITMQ_DEFAULT_PASS: ${RABBITMQ_DEFAULT_PASS}
+  haproxy:
+    image: haproxy-rabbitmq-cluster:1.7
+    container_name: haproxy
+    hostname: haproxy
+    ports:
+      - "5672:5672"
+      - "1936:1936"
 networks:
   rabbitmqnet:
     name: rabbitmqnet
