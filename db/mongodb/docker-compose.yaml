@@ -1,6 +1,7 @@
 version: '3.8'
 services:
   mongodb:
+<<<<<<< HEAD
    image: mongo
    container_name: mongodb
    restart: always
@@ -12,3 +13,16 @@ services:
     - MONGO_INITDB_ROOT_USERNAME=saeinlee
     - MONGO_INITDB_ROOT_PASSWORD=1234
     - MONGO_INITDB_DATABASE=mydb
+=======
+    image: mongo
+    container_name: mongodb
+    restart: always
+    ports: 
+      - 27017:27017
+    volumes:
+      - ./mongodb:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=1234
+      - MONGO_INITDB_DATABASE=mydb
+>>>>>>> c9e598ee882beb5f8227379a0d0b4eaa2361fc70
