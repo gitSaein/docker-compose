@@ -9,6 +9,6 @@ services:
    volumes:
     - ./mongodb:/data/db
    environment:
-    - MONGO_INITDB_ROOT_USERNAME=root
+    - MONGO_INITDB_ROOT_USERNAME=saeinlee
     - MONGO_INITDB_ROOT_PASSWORD=1234
     - MONGO_INITDB_DATABASE=chat
